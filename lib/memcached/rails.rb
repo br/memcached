@@ -73,6 +73,7 @@ class Memcached
 
     # Wraps Memcached#set.
     def set(key, value, ttl=@default_ttl, raw=false)
+      ttl = ttl.to_i if ttl
       super(key, value, ttl, !raw)
       true
     rescue NotStored
